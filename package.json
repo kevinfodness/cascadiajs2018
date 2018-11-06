@@ -1,0 +1,28 @@
+{
+  "name": "cascadiajs2018",
+  "version": "1.0.0",
+  "description": "AWS coding challenge for CascadiaJS 2018.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinfodness/cascadiajs2018.git"
+  },
+  "author": "Kevin Fodness",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinfodness/cascadiajs2018/issues"
+  },
+  "homepage": "https://github.com/kevinfodness/cascadiajs2018#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "jest": "^23.6.0",
+    "regenerator-runtime": "^0.12.1"
+  }
+}
