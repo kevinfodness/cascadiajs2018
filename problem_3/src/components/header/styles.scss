@@ -1,0 +1,14 @@
+@import '../../common/variables';
+
+.main-header {
+  background: $brand-primary;
+  padding: 1em;
+
+  h1 {
+    color: white;
+    display: inline-block;
+    margin: 0 0 0 0.5em;
+    position: relative;
+    top: -0.1em;
+  }
+}
