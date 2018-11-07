@@ -12,6 +12,14 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
+          test: /\.scss$/,
+          use: [
+            "style-loader",
+            "css-loader",
+            "sass-loader",
+          ],
+        },
+        {
           exclude: /node_modules/,
           test: /.jsx?$/,
           use: [
