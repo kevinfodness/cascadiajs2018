@@ -7,18 +7,18 @@
  */
 export default function problem2(number) {
   // Ensure that number is actually a number.
-  if ('number' !== typeof number) {
+  if (typeof number !== 'number') {
     return 'Value is not a number.';
   }
 
   // Ensure the number is in-bounds.
-  if (0 > number || 999999999.99 < number) {
+  if (number < 0 || number > 999999999.99) {
     return 'Number out of bounds.';
   }
 
   // Split the number into parts and ensure decimal is not too precise.
   const [baseNumber, decimal] = number.toString().split('.');
-  if (decimal && 99 < decimal) {
+  if (decimal && decimal > 99) {
     return 'Number is too precise.';
   }
 
@@ -86,12 +86,12 @@ export default function problem2(number) {
     }
 
     // If there is a tens place, add it.
-    if (0 < tenSegment && 20 > tenSegment) {
+    if (tenSegment > 0 && tenSegment < 20) {
       segmentResponse.push(numbers[tenSegment]);
-    } else if (20 <= tenSegment) {
+    } else if (tenSegment >= 20) {
       const tensPrimary = Math.floor(tenSegment / 10);
       const tensSecondary = tenSegment % 10;
-      if (0 === tenSegment % 10) {
+      if (tenSegment % 10 === 0) {
         segmentResponse.push(tens[tensPrimary]);
       } else {
         segmentResponse.push(`${tens[tensPrimary]}-${numbers[tensSecondary]}`);
