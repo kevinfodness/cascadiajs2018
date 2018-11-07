@@ -1,14 +1,14 @@
 const path = require('path');
 const getDevServer = require('./config/getDevServer');
+const getEntry = require('./config/getEntry');
+const getPlugins = require('./config/getPlugins');
 
 module.exports = (env, argv) => {
   const { mode } = argv;
 
   return {
     devServer: getDevServer(mode),
-    entry: {
-      problem3: './problem_3/src/index.js',
-    },
+    entry: getEntry(mode),
     module: {
       rules: [
         {
@@ -25,6 +25,7 @@ module.exports = (env, argv) => {
       filename: '[name].js',
         path: path.join(__dirname, 'problem_3/build'),
     },
+    plugins: getPlugins(mode),
     resolve: {
       extensions: ['.js', '.jsx'],
     },

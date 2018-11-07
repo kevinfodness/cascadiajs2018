@@ -17,7 +17,6 @@ module.exports = function getDevServer(mode) {
     host: '0.0.0.0',
     hot: true,
     noInfo: false,
-    publicPath: '/problem_3/build',
     quiet: false,
     stats: { colors: true },
   };
