@@ -1,7 +1,15 @@
+@import '../../common/variables';
+
 .search-form {
   display: inline-block;
+  height: 80vh;
+  overflow-y: scroll;
   padding: 2em;
-  width: 66%;
+  width: 50%;
+
+  h2 {
+    margin-left: 31.5%;
+  }
 
   input {
     display: block;
@@ -16,5 +24,24 @@
     font-weight: bold;
     margin: 0 auto;
     width: 50%;
+  }
+}
+
+.search-form-games-list {
+  list-style: none;
+  padding: 0;
+
+  button {
+    background: transparent;
+    border: 2px solid $brand-secondary;
+    font-size: 1em;
+    padding: 0.5em;
+    text-align: left;
+    width: 100%;
+  }
+
+  li {
+    margin: 1px auto;
+    width: 33%;
   }
 }

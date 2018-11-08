@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import shapes from '../../common/prop-types';
 import './styles.scss';
+
+const { GAME_SHAPE } = shapes;
 
 export default class SearchForm extends React.PureComponent {
   /**
@@ -8,14 +11,8 @@ export default class SearchForm extends React.PureComponent {
    * @type {object}
    */
   static propTypes = {
-    games: PropTypes.arrayOf(PropTypes.shape({
-      _id: PropTypes.number,
-      box: {
-        large: PropTypes.string,
-      },
-      name: PropTypes.string,
-      popularity: PropTypes.number,
-    })).isRequired,
+    games: PropTypes.arrayOf(PropTypes.shape(GAME_SHAPE)).isRequired,
+    handleSelect: PropTypes.func.isRequired,
     handleUpdate: PropTypes.func.isRequired,
   };
 
@@ -37,6 +34,7 @@ export default class SearchForm extends React.PureComponent {
       value: '',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   /**
@@ -48,6 +46,15 @@ export default class SearchForm extends React.PureComponent {
     const { value } = event.target;
     this.setState({ value });
     handleUpdate(value);
+  }
+
+  /**
+   * Click handler for entries in the game list.
+   * @param {Event} event - The click event.
+   */
+  handleClick(event) {
+    const { handleSelect } = this.props;
+    handleSelect(parseInt(event.target.getAttribute('data-game-id'), 10));
   }
 
   /**
@@ -74,10 +81,23 @@ export default class SearchForm extends React.PureComponent {
             />
           </label>
         </div>
+        {games.length > 0 && (
+          <h2>Games:</h2>
+        )}
         <ul className="search-form-games-list">
+          { /* eslint-disable no-underscore-dangle */ }
           {games.map(game => (
-            <li key={game._id}>{game.name}</li> // eslint-disable-line no-underscore-dangle
+            <li key={game._id}>
+              <button
+                data-game-id={game._id}
+                onClick={this.handleClick}
+                type="button"
+              >
+                {game.name}
+              </button>
+            </li>
           ))}
+          { /* eslint-enable */ }
         </ul>
       </form>
     );

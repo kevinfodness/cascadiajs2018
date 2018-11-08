@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import Header from '../header';
 import SearchForm from '../searchForm';
+import SelectedGame from '../selectedGame';
 import './styles.scss';
 
 /**
@@ -16,7 +17,19 @@ export default class App extends React.PureComponent {
     this.state = {
       games: [],
     };
+    this.handleSelect = this.handleSelect.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
+  }
+
+  /**
+   * Selects a specific game based on ID.
+   * @param {number} id - The ID of the game to make active.
+   */
+  handleSelect(id) {
+    const { games } = this.state;
+    this.setState({
+      selectedGame: games.find(game => id === game._id), // eslint-disable-line no-underscore-dangle, react/no-unused-state, max-len
+    });
   }
 
   /**
@@ -49,11 +62,20 @@ export default class App extends React.PureComponent {
    * @returns {object} - JSX to render this component.
    */
   render() {
-    const { games } = this.state;
+    const {
+      games,
+      selectedGame,
+    } = this.state;
+
     return (
       <Fragment>
         <Header />
-        <SearchForm games={games} handleUpdate={this.handleUpdate} />
+        <SearchForm
+          games={games}
+          handleSelect={this.handleSelect}
+          handleUpdate={this.handleUpdate}
+        />
+        <SelectedGame game={selectedGame} />
       </Fragment>
     );
   }
