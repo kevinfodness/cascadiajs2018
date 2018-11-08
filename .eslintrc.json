@@ -3,6 +3,7 @@
   "globals": {
     "describe": true,
     "expect": true,
+    "fetch": true,
     "it": true
   },
   "parser": "babel-eslint"

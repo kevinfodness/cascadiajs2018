@@ -34,6 +34,8 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^1.0.1",
+    "dotenv": "^6.1.0",
+    "dotenv-webpack": "^1.5.7",
     "eslint": "^5.8.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",

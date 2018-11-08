@@ -1,3 +1,4 @@
+const dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
 
 /**
@@ -9,11 +10,14 @@ const webpack = require('webpack');
 module.exports = function getPlugins(mode) {
   // Only configure HMR in development.
   if (mode !== 'development') {
-    return [];
+    return [
+      new dotenv(),
+    ];
   }
 
   return [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    new dotenv(),
   ];
 };
